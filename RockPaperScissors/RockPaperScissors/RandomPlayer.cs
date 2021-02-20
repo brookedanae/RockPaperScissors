@@ -8,6 +8,11 @@ namespace RockPaperScissors
     {
         public string Name { get; set; }
 
+        public RandomPlayer()
+        {
+            Name = "Rando";
+        }
+
         public override RPS GenerateRPS()
         {
             var random = new Random();

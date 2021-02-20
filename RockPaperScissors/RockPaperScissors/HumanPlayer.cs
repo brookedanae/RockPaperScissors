@@ -15,15 +15,9 @@ namespace RockPaperScissors
 
         public HumanPlayer()
         {
+
         }
 
-        //public string EnterUserName()
-        //{
-        //    //Console.Write("Enter your name: ");
-        //    //var enterName = Console.ReadLine();
-        //    //return $"Thanks, {enterName}";
-        //    //return "";
-        //}
         public override RPS GenerateRPS()
         {
             string userChoice;
@@ -32,12 +26,6 @@ namespace RockPaperScissors
             {
                 Console.WriteLine($"Thanks, {Name}! Now, rock, paper, or scissors? (r/p/s)");
                 userChoice = Console.ReadLine();
-                //isInvalid = userChoice != "r" && userChoice != "p" && userChoice != "s";
-                //if (isInvalid)
-                //{
-                //    Console.WriteLine("Please enter a valid choice!");
-                //}
-
 
 
                 switch (userChoice)
@@ -48,33 +36,17 @@ namespace RockPaperScissors
                         return RPS.Rock;
                     case "s":
                         return RPS.Scissors;
+                    case "scissors":
+                        return RPS.Scissors;
                     case "p":
+                        return RPS.Paper;
+                    case "paper":
                         return RPS.Paper;
                     default:
                         Console.WriteLine("Please enter a valid option!");
                         break;
                 }
             }
-
-
-
-
-
-            //if (userChoice == "r")
-            //{
-            //    Console.WriteLine(RPS.Rock);
-            //}
-            //else if (userChoice == "p")
-            //{
-            //    Console.WriteLine(RPS.Paper);
-            //}
-            //else if (userChoice =="s")
-            //{
-            //    Console.WriteLine(RPS.Scissors);
-            //}
-
-
-
         }
     }
 }

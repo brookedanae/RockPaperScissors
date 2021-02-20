@@ -20,9 +20,7 @@ namespace RockPaperScissors
 
 
         public abstract RPS GenerateRPS();
-        //{
 
-        //}
     }
 
 

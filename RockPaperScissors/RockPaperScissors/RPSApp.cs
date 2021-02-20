@@ -11,11 +11,13 @@ namespace RockPaperScissors
 
         public void Play()
         {
-
-            Console.WriteLine("Welcome the RPS Championships!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Welcome to the RPS Championships!" + "\n");
+            Console.ResetColor();
 
             HumanPlayer human = new HumanPlayer();
 
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("Enter your name: ");
             human.Name = Console.ReadLine();
 
@@ -26,30 +28,59 @@ namespace RockPaperScissors
                 RPS humanChoice = human.GenerateRPS();
                 RPS playerChoice = opponent.GenerateRPS();
 
-                Console.WriteLine($"Your chose: {humanChoice}");
-                Console.WriteLine($"Opponent chose : {playerChoice}");
+                Console.WriteLine($"You chose: {humanChoice}");
+                Console.WriteLine($"Opponent chose: {playerChoice}");
 
-                if (humanChoice == RPS.Rock && playerChoice == RPS.Scissors)
+                if (humanChoice == RPS.Rock && playerChoice == RPS.Rock)
+                {
+                    Console.WriteLine("Draw!");
+                }
+                else if (humanChoice == RPS.Paper && playerChoice == RPS.Paper)
+                {
+                    Console.WriteLine("Draw!");
+                }
+                else if (humanChoice == RPS.Scissors && playerChoice == RPS.Scissors)
+                {
+                    Console.WriteLine("Draw!");
+                }
+                else if (humanChoice == RPS.Paper && playerChoice == RPS.Rock)
                 {
                     Console.WriteLine("You win!");
                     HumanScore++;
                 }
-                else if(humanChoice == RPS.Paper && playerChoice == RPS.Rock)
+                else if (humanChoice == RPS.Scissors && playerChoice == RPS.Paper)
                 {
                     Console.WriteLine("You win!");
                     HumanScore++;
                 }
-                else
+                else if (humanChoice == RPS.Rock && playerChoice == RPS.Scissors)
+                {
+                    Console.WriteLine("You win!");
+                    HumanScore++;
+                }
+                else if (humanChoice == RPS.Rock && playerChoice == RPS.Paper)
+                {
+                    Console.WriteLine("You lose!");
+                    OpponentScore++;
+                }
+                else if (humanChoice == RPS.Paper && playerChoice == RPS.Scissors)
+                {
+                    Console.WriteLine("You lose!");
+                    OpponentScore++;
+                }
+                else if (humanChoice == RPS.Scissors && playerChoice == RPS.Rock)
                 {
                     Console.WriteLine("You lose!");
                     OpponentScore++;
                 }
 
 
+
                 Console.WriteLine($"Your score: {HumanScore}");
                 Console.WriteLine($"Opponent score: {OpponentScore}");
 
             } while (PlayAgain());
+
         }
 
         private bool PlayAgain()
@@ -71,7 +102,7 @@ namespace RockPaperScissors
 
             if(playAgain == "n")
             {
-                Console.WriteLine("Goodbye");
+                Console.WriteLine("Thanks for playing!");
             }
 
             return playAgain == "y";
@@ -81,8 +112,8 @@ namespace RockPaperScissors
         {
             do
             {
-                Console.WriteLine("Choose your opponent");
-                string choice = Console.ReadLine();
+                Console.WriteLine("Choose your opponent: Rocky or Rando?");
+                string choice = Console.ReadLine().ToLower();
 
                 switch (choice)
                 {
@@ -91,10 +122,9 @@ namespace RockPaperScissors
                     case "rando":
                         return new RandomPlayer();
                     default:
-                        Console.WriteLine("Invalid selection");
+                        Console.WriteLine("Invalid selection!");
                         break;
                 }
-
             } while (true);
         }
     }

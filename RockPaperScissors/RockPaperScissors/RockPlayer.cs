@@ -15,7 +15,7 @@ namespace RockPaperScissors
 
         public override RPS GenerateRPS()
         {
-            return 0;
+            return RPS.Rock;
         }
     }
 }
